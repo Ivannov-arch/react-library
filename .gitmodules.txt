@@ -1,0 +1,3 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/Ivannov-arch/Project-1.0-backend.git

@@ -1,0 +1,60 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuthStore from "./AuthStore";
+
+export default function Login() {
+    const login = useAuthStore((state) => state.login);
+    const [usn, setUsn] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const handleLogin = async () => {
+        // let userData = ""
+        
+        if (usn.trim() === "") {
+            alert("Username tidak boleh kosong");
+            return;
+        }
+
+        const res = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ usn, password })
+        })
+        const data = await res.json();
+
+        if (res.ok) {
+            login(data.user, data.token);
+            alert(`Welcome, ${data.user.name}`);
+            navigate('/')
+        }
+        else {
+            alert(data.error)
+        }
+    }
+
+        return (
+            <div className="*:block flex-col gap-6">
+                <h2>Login</h2>
+                <input 
+                    className="my-6 border rounded"
+                    type="text"
+                    placeholder="Enter your username"
+                    value={usn}
+                    onChange={(e) => setUsn(e.target.value)} />
+
+                <input 
+                    className="my-6 border rounded"
+                    type="text"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
+
+                <button onClick={handleLogin}>Login</button>
+                <p>
+                    Belum punya akun?{" "}
+                    <button onClick={() => navigate("/register")}>Register</button>
+                </p>
+            </div>
+        )
+}

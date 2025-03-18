@@ -1,0 +1,10 @@
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, React">
+    <meta name="description" content="React is a JavaScript framework and
+                                      library at the same time which help you 
+                                      to help you build and optimize your website">
+    <meta name="author" content="Ivannov">
+    <meta http-equiv="refresh" content="00">
+    <meta name="revised" content="Ivannov, 12/16/2024">
+    <meta name="cookie" content="id = 401; expires = Sunday 18-Jul-2021 23:59:59 IST">
