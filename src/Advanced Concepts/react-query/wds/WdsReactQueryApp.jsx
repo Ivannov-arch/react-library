@@ -67,18 +67,18 @@ import CreatePost from "./components/CreatePost";
 import PostListPaginated from './components/PostListPaginated';
 import PostInfinite from "./components/PostInfinite";
 import { useQueryClient } from "@tanstack/react-query";
-import { getPostsPaginated } from "./api/posts";
+// import { getPostsPaginated } from "./api/posts";
 
 
 export default function WdsReactQueryApp() {
     const [currentPage, setCurrentPage] = useState(<PostsList1/>)
     const queryClient =  useQueryClient()
 
-    function onHoverPrefetch() {
-        queryClient .prefetchQuery({ 
-            queryKey: ["postsWDS", page, limit], 
-            queryFn: () => getPostsPaginated(page, limit)})
-    }
+    // function onHoverPrefetch() {
+    //     queryClient.prefetchQuery({ 
+    //         queryKey: ["postsWDS", page, limit], 
+    //         queryFn: () => getPostsPaginated(page, limit)})
+    // }
 
     return (
         <div>
@@ -86,7 +86,8 @@ export default function WdsReactQueryApp() {
             <button onClick={() => setCurrentPage(<PostsList2/>)}>Posts List 2</button>
             <button onClick={() => setCurrentPage(<Post id={1} message=""/>)}>1st Post</button>
             <button onClick={() => setCurrentPage(<CreatePost setCurrentPage={setCurrentPage}/>)}>Create Post</button>
-            <button onMouseEnter={onHoverPrefetch} onClick={() => setCurrentPage(<PostListPaginated/>)}>Post List Paginated</button>
+            {/* <button onMouseEnter={onHoverPrefetch} onClick={() => setCurrentPage(<PostListPaginated/>)}>Post List Paginated</button> */}
+            <button onClick={() => setCurrentPage(<PostListPaginated/>)}>Post List Paginated</button>
             <button onClick={() => setCurrentPage(<PostInfinite/>)}>Post Infinite</button>
             <br />
             {currentPage}
