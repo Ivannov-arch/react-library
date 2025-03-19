@@ -66,13 +66,13 @@ import Post from "./components/Post";
 import CreatePost from "./components/CreatePost";
 import PostListPaginated from './components/PostListPaginated';
 import PostInfinite from "./components/PostInfinite";
-import { useQueryClient } from "@tanstack/react-query";
+// import { useQueryClient } from "@tanstack/react-query";
 // import { getPostsPaginated } from "./api/posts";
 
 
 export default function WdsReactQueryApp() {
     const [currentPage, setCurrentPage] = useState(<PostsList1/>)
-    const queryClient =  useQueryClient()
+    // const queryClient =  useQueryClient()
 
     // function onHoverPrefetch() {
     //     queryClient.prefetchQuery({ 
