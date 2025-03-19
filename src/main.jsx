@@ -37,17 +37,25 @@ const RenderLists = React.lazy(() => import('./Basic Concepts/render-list/AppLis
 const ClickEvents = React.lazy(() => import('./Basic Concepts/click-event/CeApp.jsx'))
 
 const UseStatesNav = React.lazy(() => import('./Pages/UseStatesNav.jsx'))
-const UseState = React.lazy(() => import('./Basic Concepts/react-hooks/UseState/UseState.jsx'))
-const UpdateArray = React.lazy(() => import('./Basic Concepts/react-hooks/UseState/UpdateArrays.jsx'))
-const UpdateObject = React.lazy(() => import('./Basic Concepts/react-hooks/UseState/UpdateObjects.jsx'))
-const UpdateArrayOfObject = React.lazy(() => import('./Basic Concepts/react-hooks/UseState/UpdateArraysOfObjects.jsx'))
-const Counter = React.lazy(() => import('./Basic Concepts/react-hooks/UseState/Counter.jsx'))
+const UseState = React.lazy(() => import('./Basic Concepts/react-hooks/use-state/UseState.jsx'))
+const UpdateArray = React.lazy(() => import('./Basic Concepts/react-hooks/use-state/UpdateArrays.jsx'))
+const UpdateObject = React.lazy(() => import('./Basic Concepts/react-hooks/use-state/UpdateObjects.jsx'))
+const UpdateArrayOfObject = React.lazy(() => import('./Basic Concepts/react-hooks/use-state/UpdateArraysOfObjects.jsx'))
+const Counter = React.lazy(() => import('./Basic Concepts/react-hooks/use-state/Counter.jsx'))
 
 
-const OnChange = React.lazy(() => import('./Basic Concepts/react-hooks/OnChange/AppOnChange.jsx'))
-const UseEffect = React.lazy(() => import('./Basic Concepts/react-hooks/UseEffect/UseEffect.jsx'))
-const UseContext = React.lazy(() => import('./Basic Concepts/react-hooks/UseContext/UseContext.jsx'))
-const UseRef = React.lazy(() => import('./Basic Concepts/react-hooks/UseRef/UseRef.jsx'))
+const OnChange = React.lazy(() => import('./Basic Concepts/react-hooks/on-change/AppOnChange.jsx'))
+const UseEffect = React.lazy(() => import('./Basic Concepts/react-hooks/use-effect/UseEffect.jsx'))
+const UseContext = React.lazy(() => import('./Basic Concepts/react-hooks/use-context/UseContext.jsx'))
+const UseRef = React.lazy(() => import('./Basic Concepts/react-hooks/use-ref/UseRef.jsx'))
+const UseReducer = React.lazy(() => import('./Basic Concepts/react-hooks/use-reducer/UseReducer.jsx'))
+const UseImperativeHandle = React.lazy(() => import('./Basic Concepts/react-hooks/use-imperative-handle/Uih.jsx'))
+const UseLayoutEffect = React.lazy(() => import('./Basic Concepts/react-hooks/use-layout-effect/UseLayoutEffect.jsx'))
+const UseInsertionEffect = React.lazy(() => import('./Basic Concepts/react-hooks/use-insert-effect/UseInsertEffect.jsx'))
+const UseId = React.lazy(() => import('./Basic Concepts/react-hooks/use-id/UseId.jsx'))
+const UseTransition = React.lazy(() => import('./Basic Concepts/react-hooks/use-transition/UseTransition.jsx'))
+const UseDeferredValue = React.lazy(() => import('./Basic Concepts/react-hooks/use-deferred-value/UseDeferredvalue.jsx'))
+const UseSyncExternalStore = React.lazy(() => import('./Basic Concepts/react-hooks/use-sync-external-store/UseSyncExternalStore.jsx'))
 //#endregion
 
 // --------------------------------------------------------------------------------------------------------------------------------------------
@@ -104,6 +112,14 @@ const router = createBrowserRouter([
   { path: '/use-effect', element: <UseEffect /> },
   { path: '/use-context', element: <UseContext /> },
   { path: '/use-ref', element: <UseRef /> },
+  { path: '/use-reducer', element: <UseReducer /> },
+  { path: '/use-imperative-handle', element: <UseImperativeHandle /> },
+  { path: '/use-layout-effect', element: <UseLayoutEffect /> },
+  { path: '/use-insert-effect', element: <UseInsertionEffect /> },
+  { path: '/use-id', element: <UseId /> },
+  { path: '/use-transition', element: <UseTransition /> },
+  { path: '/use-deferred-value', element: <UseDeferredValue /> },
+  { path: '/use-sync-external-store', element: <UseSyncExternalStore /> },
 
 
   { path: '/advanced', element: <Advanced /> },
