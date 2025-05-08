@@ -7,7 +7,10 @@ export default function RhfApp() {
   return (
     <>
       <ZodRhf /> <br />
-      <Link to="https://youtu.be/cc_xmawJ8Kg?si=kzZFptyResNfKioP">
+      <Link
+        target="_blank"
+        to="https://youtu.be/cc_xmawJ8Kg?si=kzZFptyResNfKioP"
+      >
         Learn Here
       </Link>
       <button onClick={() => window.history.back()} className="text-indigo-600">

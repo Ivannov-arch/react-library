@@ -162,7 +162,10 @@ import { Link } from "react-router-dom";
 export default function AustinReactQueryApp() {
   return (
     <>
-      <Link to="https://youtu.be/r8Dg0KVnfMA?si=https://youtu.be/mPaCnwpFvZY?si=znyddf0zSuuUdrSC">
+      <Link
+        target="_blank"
+        to="https://youtu.be/r8Dg0KVnfMA?si=https://youtu.be/mPaCnwpFvZY?si=znyddf0zSuuUdrSC"
+      >
         Learn Here
       </Link>
       <button onClick={() => window.history.back()} className="text-indigo-600">

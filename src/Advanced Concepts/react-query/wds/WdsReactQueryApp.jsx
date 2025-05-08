@@ -92,7 +92,7 @@ export default function WdsReactQueryApp() {
             <br />
             {currentPage}
             <br />
-            <Link to='https://youtu.be/r8Dg0KVnfMA?si=unKXwbn6aCLeltEV'>Learn Here</Link>
+            <Link target='_blank' to='https://youtu.be/r8Dg0KVnfMA?si=unKXwbn6aCLeltEV'>Learn Here</Link>
             <button onClick={() => window.history.back()} className="text-indigo-600">Back</button>
         </div>
     )
