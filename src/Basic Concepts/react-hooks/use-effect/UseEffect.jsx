@@ -15,27 +15,15 @@
 // 3. Subscriptions (real-time updates)
 // 4. Fetching Data from an API
 // 5. Clean Up when a component unmounts
-/*************  ✨ Windsurf Command ⭐  *************/
-/**
- * Halaman ini menjelaskan tentang penggunaan useEffect di React.
- *
- * useEffect() adalah hook React yang memungkinkan kamu untuk menjalankan
- * *side effect* di dalam komponen — seperti update DOM, event listener, fetch
- * API, atau mengatur timer. Ini mirip dengan componentDidMount,
- * componentDidUpdate, dan componentWillUnmount di class component.
- *
- * Contoh penggunaan useEffect di halaman ini antara lain:
- * 1. Manipulasi judul halaman
- * 2. Membuat event listener untuk resize window
- **/
 
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+React;
+import Buttons from "../../../Components/Button";
 
-export default function Page() {
-  const navigate = useNavigate();
+function MyEffect() {
+  // ---------------------------------------------------------------------------
   const [count, setCount] = useState(0);
-  const [color, setColor] = useState("lightgreen");
+  const [color, setColor] = useState("blue");
 
   useEffect(() => {
     document.title = `Count: ${count} ${color}`;
@@ -52,7 +40,7 @@ export default function Page() {
     setCount((c) => c - 1);
   }
   function changeColor() {
-    setColor((c) => (c === "lightgreen" ? "red" : "lightgreen"));
+    setColor((c) => (c === "blue" ? "red" : "blue"));
   }
 
   // ------------------------------------------------------------------------
@@ -78,8 +66,30 @@ export default function Page() {
     setHeight(window.innerHeight);
   }
 
+  // ------------------------------------------------------------------
+
   return (
-    <div className="space-y-6 p-4 text-left">
+    <>
+      <p>Window Width: {width}</p>
+      <p>Window Height: {height}</p>
+
+      <div className="space-x-3 mt-6">
+        <p className="mt-6 mb-4 text-3xl" style={{ color: color }}>
+          Count: {count}
+        </p>
+        <button onClick={addCount}>Add</button>
+        <button onClick={substractCount}>Substract</button>
+        <button onClick={changeColor}>Change Color</button>
+      </div>
+    </>
+  );
+}
+
+("use client");
+
+export default function Page() {
+  return (
+    <div className="space-y-6 text-left">
       <h1>🧠 Mengenal useEffect di React</h1>
 
       <p>
@@ -141,24 +151,10 @@ export default function Page() {
       </p>
 
       <h2>⚙️ Contoh Implementasi Lengkap</h2>
-      <p>Berikut adalah komponen React yang menggunakan beberapa useEffect:</p>
-
-      <div className="mt-6 p-5 border rounded text-center">
-        <p>Window Width: {width}</p>
-        <p>Window Height: {height}</p>
-
-        <p
-          className="mt-6 mb-4 text-lightgreen-300 text-3xl"
-          style={{ color: color }}
-        >
-          Count: {count}
-        </p>
-        <div className="space-x-5">
-          <button onClick={addCount}>Add</button>
-          <button onClick={substractCount}>Substract</button>
-          <button onClick={changeColor}>Change Color</button>
-        </div>
+      <div className="bg-slate-200 dark:bg-slate-700 p-4 border rounded-md text-center">
+        <MyEffect />
       </div>
+      <p>Berikut adalah komponen React yang menggunakan beberapa useEffect:</p>
       <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
         <code>{`import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -166,7 +162,7 @@ import { useNavigate } from "react-router-dom";
 function MyEffect() {
   const navigate = useNavigate();
   const [count, setCount] = useState(0);
-  const [color, setColor] = useState("lightgreen");
+  const [color, setColor] = useState("blue");
 
   useEffect(() => {
     document.title = \`Count: \${count} \${color}\`;
@@ -208,7 +204,7 @@ function MyEffect() {
         <p className="mt-6 mb-4 text-3xl" style={{ color: color }}>Count: {count}</p>
         <button onClick={() => setCount(c => c + 1)}>Add</button>
         <button onClick={() => setCount(c => c - 1)}>Substract</button>
-        <button onClick={() => setColor(c => c === "lightgreen" ? "red" : "lightgreen")}>Change Color</button>
+        <button onClick={() => setColor(c => c === "blue" ? "red" : "blue")}>Change Color</button>
       </div>
     </>
   );
@@ -216,6 +212,7 @@ function MyEffect() {
 
 export default MyEffect;`}</code>
       </pre>
+
       <h2>📌 Tips Penggunaan useEffect</h2>
       <ul className="list-disc list-inside">
         <li>
@@ -238,18 +235,7 @@ export default MyEffect;`}</code>
         samping di React function component. Dengan memahami timing dan
         dependency-nya, kamu bisa mengontrol perilaku komponen secara presisi.
       </p>
-
-      <div className="*:mx-4 my-6 *:my-3">
-        <button onClick={() => navigate("/")} className="text-indigo-600">
-          Home
-        </button>
-        <button
-          onClick={() => window.history.back()}
-          className="text-indigo-600"
-        >
-          Back
-        </button>
-      </div>
+      <Buttons />
     </div>
   );
 }

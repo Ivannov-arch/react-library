@@ -1,11 +1,9 @@
 "use client";
 
+import Buttons from "../../../Components/Button";
 import OnChange from "./OnChange";
-import { useNavigate } from "react-router-dom";
 
 export default function Page() {
-  const navigate = useNavigate();
-
   return (
     <div className="space-y-6 p-4 text-left">
       <h1>
@@ -91,22 +89,6 @@ function handleNameChange(event) {
         <OnChange />
       </div>
 
-      <h2 className="text-center">🔁 Navigasi</h2>
-      <div className="space-x-4 text-center">
-        <button
-          onClick={() => navigate("/")}
-          className="text-indigo-600 underline"
-        >
-          Home
-        </button>
-        <button
-          onClick={() => window.history.back()}
-          className="text-indigo-600 underline"
-        >
-          Back
-        </button>
-      </div>
-
       <h2>Kesimpulan</h2>
       <p>
         🎯 Gunakan <code>onChange</code> untuk membaca input pengguna secara
@@ -114,6 +96,9 @@ function handleNameChange(event) {
         form, validasi data, serta menjaga UI tetap sinkron dengan logika
         aplikasi.
       </p>
+
+      <h2 className="text-center">🔁 Navigasi</h2>
+      <Buttons />
     </div>
   );
 }

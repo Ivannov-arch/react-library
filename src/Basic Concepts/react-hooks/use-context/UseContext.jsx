@@ -17,15 +17,27 @@
 
 import React, { useState, createContext } from "react";
 React;
-import { useNavigate } from "react-router-dom";
 import ComponentB from "./ComponentB";
+import Buttons from "../../../Components/Button";
 
 export const UserContext = createContext();
 
-export default function UseContext() {
-  const navigate = useNavigate();
-
+export function UseContext() {
   const [user] = useState("Brocode");
+  return (
+    <div>
+      <div className="mx-auto max-w-fit box">
+        <h1>ComponentA</h1>
+        <h2>{`Hello ${user}`}</h2>
+        <UserContext.Provider value={user}>
+          <ComponentB user={user} />
+        </UserContext.Provider>
+      </div>
+    </div>
+  );
+}
+
+export default function Page() {
   return (
     <div className="space-y-6 text-left">
       <h1>📦 React useContext Hook</h1>
@@ -100,15 +112,8 @@ export default function UseContext() {
   }`}</code>
       </pre>
 
-      <div>
-        <div className="mx-auto max-w-fit box">
-          <h1>ComponentA</h1>
-          <h2>{`Hello ${user}`}</h2>
-          <UserContext.Provider value={user}>
-            <ComponentB user={user} />
-          </UserContext.Provider>
-        </div>
-      </div>
+      <UseContext />
+
       <h2>🔗 Alur Data (Ringkasan)</h2>
       <ul className="list-disc list-inside">
         <li>
@@ -145,17 +150,7 @@ export default function UseContext() {
         tanpa repot oper-oper props. Sangat cocok untuk state global seperti
         user info, tema, dan bahasa.
       </p>
-      <div className="*:mx-4 my-6 *:my-3">
-        <button onClick={() => navigate("/")} className="text-indigo-600">
-          Home
-        </button>
-        <button
-          onClick={() => window.history.back()}
-          className="text-indigo-600"
-        >
-          Back
-        </button>
-      </div>
+      <Buttons />
     </div>
   );
 }
