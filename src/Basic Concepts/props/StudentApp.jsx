@@ -1,5 +1,3 @@
-"use client";
-
 import Student from "./Student";
 import { useNavigate } from "react-router-dom";
 
