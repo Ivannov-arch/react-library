@@ -1,4 +1,5 @@
 import { useDeferredValue, useState } from "react";
+import Buttons from "../../../Components/Button";
 
 export function UseDeferredvalue() {
   const [query, setQuery] = useState("");
@@ -130,6 +131,7 @@ export default function Page() {
         menangani input yang berubah cepat + data besar. Ini bukan debouncing,
         tapi <strong>penjadwalan render pintar dari React</strong>!
       </p>
+      <Buttons />
     </div>
   );
 }

@@ -41,7 +41,7 @@ export const CustomInput = forwardRef((_, ref) => {
 
   return (
     <input
-      className="bg-slate-700 p-1 rounded-md placeholder:text-slate-450"
+      className="bg-slate-700 p-1 rounded-md placeholder-slate-400"
       ref={inputRef}
       type="text"
       placeholder="Type something"
