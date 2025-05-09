@@ -1,69 +1,100 @@
 // onChange = event handler used primarilly with form elements
-    //        ex. <input>, <textarea>, <select>, <radio>
-    //        Triggers a function every time the value of the input changes
+//        ex. <input>, <textarea>, <select>, <radio>
+//        Triggers a function every time the value of the input changes
 
-import { useState } from "react"
+import { useState } from "react";
 
-    function OnChange() {
+function OnChange() {
+  const [name, setName] = useState("Guest");
+  const [quantity, setQuantity] = useState(1);
+  const [comment, setComment] = useState("");
+  const [payment, setPayment] = useState("");
+  const [shipping, setShipping] = useState("");
 
-        const [name, setName] = useState("Guest");
-        const [quantity, setQuantity] = useState(1);
-        const [comment, setComment] = useState("");
-        const [payment, setPayment] = useState("");
-        const [shipping, setShipping] = useState("")
+  return (
+    <div className="space-y-6 bg-white shadow-md mx-auto p-6 rounded-xl max-w-md">
+      <h1 className="font-semibold text-xl">🧪 React onChange Handler</h1>
 
-        function handleNameChange(event) {
-            setName(event.target.value);
-        }
-        function handleQuantityChange(event) {
-            setQuantity(event.target.value);
-        }
-        function handleCommentChange(event) {
-            setComment(event.target.value);
-        }
-        function handlePaymentChange(event) {
-            setPayment(event.target.value);
-        }
-        function handleShippingChange(event) {
-            setShipping(event.target.value);
-        }
+      {/* Name Input */}
+      <div className="space-y-1">
+        <label className="block font-medium">Name</label>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+        />
+        <p className="text-gray-600 text-sm">Name: {name}</p>
+      </div>
 
-        return(
-            <div>
-                <input value={name} onChange={handleNameChange}/>
-                <p>Name: {name}</p>
+      {/* Quantity Input */}
+      <div className="space-y-1">
+        <label className="block font-medium">Quantity</label>
+        <input
+          type="number"
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
+          className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+        />
+        <p className="text-gray-600 text-sm">Quantity: {quantity}</p>
+      </div>
 
-                <input value={quantity} onChange={handleQuantityChange} type="number"/>
-                <p>Quantity: {quantity}</p>
+      {/* Comment Textarea */}
+      <div className="space-y-1">
+        <label className="block font-medium">Comment</label>
+        <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          placeholder="Enter delivery instructions"
+          className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+        />
+        <p className="text-gray-600 text-sm">Comment: {comment}</p>
+      </div>
 
-                <textarea value={comment} onChange={handleCommentChange} placeholder="Enter delivery instructions"/>
-                <p>Comment: {comment}</p>
+      {/* Payment Select */}
+      <div className="space-y-1">
+        <label className="block font-medium">Payment Method</label>
+        <select
+          value={payment}
+          onChange={(e) => setPayment(e.target.value)}
+          className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+        >
+          <option value="">Select an option</option>
+          <option value="Visa">Visa</option>
+          <option value="MasterCard">MasterCard</option>
+          <option value="GiftCard">GiftCard</option>
+        </select>
+        <p className="text-gray-600 text-sm">Payment: {payment}</p>
+      </div>
 
-                <select value={payment} onChange={handlePaymentChange}>
-                    <option value="">Select an option</option>
-                    <option value="Visa">Visa</option>
-                    <option value="MasterCard">MasterCard</option>
-                    <option value="GiftCard">GiftCard</option>
-                </select>
-                <p>Payment: {payment}</p>
+      {/* Shipping Radio */}
+      <div className="space-y-1">
+        <label className="block font-medium">Shipping Method</label>
+        <div className="space-x-4">
+          <label className="inline-flex items-center">
+            <input
+              type="radio"
+              value="Pick Up"
+              checked={shipping === "Pick Up"}
+              onChange={(e) => setShipping(e.target.value)}
+              className="mr-2"
+            />
+            Pick Up
+          </label>
+          <label className="inline-flex items-center">
+            <input
+              type="radio"
+              value="Delivery"
+              checked={shipping === "Delivery"}
+              onChange={(e) => setShipping(e.target.value)}
+              className="mr-2"
+            />
+            Delivery
+          </label>
+        </div>
+        <p className="text-gray-600 text-sm">Shipping: {shipping}</p>
+      </div>
+    </div>
+  );
+}
 
-                <label>
-                    <input type="radio" value="Pick Up"
-                                    checked={shipping === "Pick Up"}
-                                    onChange={handleShippingChange}/>
-                    Pick Up
-                </label>
-                <br />
-                <label>
-                    <input type="radio" value="Delivery"
-                                    checked={shipping === "Delivery"}
-                                    onChange={handleShippingChange}/>
-                    Delivery
-                </label>
-                <p>Shipping: {shipping}</p>
-            </div>
-        )
-        
-    }
-
-    export default OnChange
+export default OnChange;
