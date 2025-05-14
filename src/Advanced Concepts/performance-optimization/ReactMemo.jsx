@@ -18,45 +18,119 @@
 // Header untuk menampilkan judul.
 // Setiap kali kamu menambah angka, komponen Header juga ikut di-render ulang meskipun props-nya tidak berubah.
 
-
-
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-// import screenshot0 from '../../assets/react-memo0.png'
-import screenshot from '../../assets/react-memo.png'
-import screenshot2 from '../../assets/react-memo2.png'
-// import screenshot3 from '../../assets/react-memo3.png'
-
-export default function ReactMemo() {
-const navigate = useNavigate()
-  const [count, setCount] = useState(0);
-
+import Buttons from "../../Components/Button";
+export default function Page() {
   return (
-    <div>
+    <div className="space-y-6 text-left">
+      <h1>🧠 Optimasi Komponen dengan React.memo()</h1>
 
-        <div className="*:mx-4 my-6 *:my-3">
-                <button onClick={() => navigate('/')} className="text-indigo-600">Home</button>
-                <button onClick={() => window.history.back()} className="text-indigo-600">Back</button>
-        </div>
+      <p>
+        <strong>Apa Itu React.memo()?</strong>
+        <br />
+        <code>React.memo()</code> adalah fungsi di React untuk **mencegah
+        komponen functional dirender ulang** secara tidak perlu. Komponen hanya
+        akan dirender ulang jika props-nya berubah.
+      </p>
 
-      <Header />
-      <h1>Count: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>Tambah</button>
+      <h2>🎯 Kapan Menggunakan React.memo()?</h2>
+      <ul className="list-disc list-inside">
+        <li>Komponenmu tidak tergantung pada state global.</li>
+        <li>Props jarang berubah.</li>
+        <li>Kamu ingin menghindari render ulang yang tidak perlu.</li>
+        <li>Komponen cukup berat (banyak perhitungan/rendering).</li>
+      </ul>
 
-      {/* <img src={screenshot0} alt="" /> */}
-      <img src={screenshot} alt="" />
-      <img src={screenshot2} alt="" />
-      {/* <img src={screenshot3} alt="" /> */}
+      <h2>📦 Contoh Sederhana</h2>
+      <p>Bayangkan kamu punya 2 komponen:</p>
+      <ul className="list-disc list-inside">
+        <li>
+          <strong>Counter</strong> → Menampilkan angka yang bisa bertambah.
+        </li>
+        <li>
+          <strong>Header</strong> → Menampilkan judul statis.
+        </li>
+      </ul>
+      <p>
+        Saat kamu menekan tombol tambah, seluruh komponen akan dirender ulang —{" "}
+        <strong>termasuk Header</strong> meskipun props-nya tidak berubah!
+      </p>
+
+      <h2>✅ Solusi: Gunakan React.memo()</h2>
+      <p>
+        Dengan <code>React.memo()</code>
+        {`, React akan "mengingat" hasil render terakhir dan hanya merender ulang jika props berubah.`}
+      </p>
+      <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
+        <code>{`const Header = React.memo(() => {
+  console.log("Header di-render ulang!");
+  return <h2>Aplikasi Penghitung</h2>;
+});`}</code>
+      </pre>
+
+      <p>
+        Sekarang, <strong>Header tidak akan dirender ulang</strong> saat kamu
+        menekan tombol tambah, karena props-nya tidak berubah!
+      </p>
+
+      <h2>📉 Tanpa React.memo()</h2>
+      <p>
+        Tanpa <code>React.memo()</code>, setiap render pada parent (seperti
+        `App` atau `Page`) akan membuat <code>Header</code> dirender ulang,
+        walaupun tidak ada perubahan.
+      </p>
+
+      <h2>📌 Catatan Penting</h2>
+      <ul className="list-disc list-inside">
+        <li>
+          <strong>
+            React.memo() hanya bekerja untuk komponen fungsi (functional
+            component).
+          </strong>
+        </li>
+        <li>
+          Ini hanya mencegah render ulang jika{" "}
+          <strong>props tidak berubah</strong>. Jika state internal berubah,
+          tetap akan render ulang.
+        </li>
+        <li>
+          Untuk props kompleks (object, array, function), React membandingkan{" "}
+          <strong>berdasarkan referensi</strong>, bukan isi.
+        </li>
+      </ul>
+
+      <h2>🔍 Props Kompleks & Custom Comparison Function</h2>
+      <p>
+        Jika kamu meneruskan props berupa <code>array</code>,{" "}
+        <code>object</code>, atau <code>function</code>, maka props tersebut
+        dianggap <strong>selalu berubah</strong> walau isinya sama, karena
+        referensinya berbeda tiap render.
+      </p>
+
+      <p>Solusi: Gunakan custom comparison function.</p>
+      <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
+        <code>{`const List = React.memo(({ items }) => {
+  return items.map((item) => <div key={item}>{item}</div>);
+}, (prevProps, nextProps) => {
+  return JSON.stringify(prevProps.items) === JSON.stringify(nextProps.items);
+});`}</code>
+      </pre>
+
+      <p>
+        Di sini, kita membandingkan isi array <code>items</code> agar{" "}
+        <strong>render hanya terjadi saat benar-benar ada perubahan</strong>.
+      </p>
+
+      <h2>📌 Kesimpulan</h2>
+      <p>
+        🎯 Gunakan <code>React.memo()</code> untuk meningkatkan performa
+        komponen React yang tidak perlu selalu dirender ulang. Tapi hati-hati
+        saat props-nya berupa objek/array/fungsi — pertimbangkan custom
+        comparison function!
+      </p>
+      <Buttons />
     </div>
   );
 }
-
-// Membungkus Header dengan React.memo untuk mencegah render ulang
-// eslint-disable-next-line react/display-name
-const Header = React.memo(() => {
-  console.log("Header di-render ulang!");
-  return <h2>Aplikasi Penghitung</h2>;
-});
 
 // versi tanpa react.memo
 // function Header() {
@@ -74,9 +148,8 @@ const Header = React.memo(() => {
 
 // Catatan Penting:
 // React.memo() tidak mencegah render ulang karena state di komponen itu sendiri berubah. Ini hanya berlaku untuk perubahan props.
-// Untuk komponen dengan props kompleks, kamu bisa memberikan fungsi pembanding (custom comparison function) sebagai parameter kedua 
+// Untuk komponen dengan props kompleks, kamu bisa memberikan fungsi pembanding (custom comparison function) sebagai parameter kedua
 // untuk memutuskan apakah props dianggap berubah atau tidak.
-
 
 // Berikut adalah penjelasan lebih rinci dari catatan tersebut:
 // 2. Props yang Kompleks Bisa Membutuhkan Custom Comparison Function
@@ -87,7 +160,7 @@ const Header = React.memo(() => {
 // Setiap kali tombol ditekan, komponen App di-render ulang, dan props items dianggap berbeda karena array ["A", "B", "C"]
 //  adalah objek baru (meski isinya sama).
 // Akibatnya, List ikut di-render ulang setiap saat.
-// Solusi dengan Custom Comparison Function: Kamu bisa memberikan fungsi pembanding (comparison function) sebagai 
+// Solusi dengan Custom Comparison Function: Kamu bisa memberikan fungsi pembanding (comparison function) sebagai
 // parameter kedua di React.memo() untuk menentukan apakah props benar-benar berubah.
 
 // Penjelasan:

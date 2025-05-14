@@ -2,6 +2,7 @@ import React from "react";
 import RhfForm from ".//RhfForm";
 import ZodRhf from "./ZodRhf";
 import { Link } from "react-router-dom";
+import Buttons from "../../Components/Button";
 
 export default function RhfApp() {
   return (
@@ -11,11 +12,9 @@ export default function RhfApp() {
         target="_blank"
         to="https://youtu.be/cc_xmawJ8Kg?si=kzZFptyResNfKioP"
       >
-        Learn Here
+        Learn More
       </Link>
-      <button onClick={() => window.history.back()} className="text-indigo-600">
-        Back
-      </button>
+      <Buttons />
     </>
   );
 }

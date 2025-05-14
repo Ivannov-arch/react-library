@@ -11,6 +11,7 @@ import ZodPromiseType from "./PromiseType";
 import AdvancedValidation from "./AdvancedValidation";
 import HandlingError from "./HandlingZodError";
 import { Link } from "react-router-dom";
+import Buttons from "../../Components/Button";
 
 export default function ZodApp() {
   //#region : we don't need this
@@ -25,19 +26,14 @@ export default function ZodApp() {
     <>
       <div>
         Zod, <br /> Check console.log()
-        <br />{" "}
+        <br /> <br />
         <Link
           target="_blank"
           to="https://www.youtube.com/watch?v=L6BE-U3oy80&t=148s"
         >
-          Learn Here!
+          Learn More!
         </Link>
-        <button
-          onClick={() => window.history.back()}
-          className="text-indigo-600"
-        >
-          Back
-        </button>
+        <Buttons />
         <ZodBasicMemo />
         <ZodObjectsMemo />
         <ZodTuplesMemo />

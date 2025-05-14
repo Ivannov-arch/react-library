@@ -76,10 +76,8 @@ export default function Page() {
 
       <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
         <code>{`import React, { useState } from "react";
-  import { useNavigate } from "react-router-dom";
   
   function MyCar() {
-    const navigate = useNavigate();
   
     const [car, setCar] = useState({
       year: 2024,
@@ -99,11 +97,8 @@ export default function Page() {
       setCar(c => ({ ...c, model: event.target.value })); // update model
     }
   
-    return (
-      <div>
-        <button onClick={() => navigate("/")} className="text-indigo-600">Home</button>
-        <button onClick={() => window.history.back()} className="text-indigo-600">Back</button>
-  
+    return ( 
+
         <p>Your Favourite car is: {car.year} {car.make} {car.model}</p>
   
         <input type="number" value={car.year} onChange={handleYearChange} className="my-0.5 border-[0.1px] rounded" /><br />

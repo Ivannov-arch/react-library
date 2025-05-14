@@ -7,6 +7,7 @@ import createPostsQueryOptions from "./queryOptions/createPostsQueryOptions";
 import createUsersQueryOptions from "./queryOptions/createUsersQueryOptions";
 import Card from "./Card";
 import { Link } from "react-router-dom";
+import Buttons from "../../../Components/Button";
 
 //#region : loading, error, refetch example
 // export default function AustinReactQueryApp() {
@@ -159,19 +160,18 @@ import { Link } from "react-router-dom";
 //#endregion
 
 //#region : useQueries(), doing multiple queries synchronously
+
 export default function AustinReactQueryApp() {
   return (
     <>
+      <Card /> <br /> <br />
       <Link
         target="_blank"
         to="https://youtu.be/r8Dg0KVnfMA?si=https://youtu.be/mPaCnwpFvZY?si=znyddf0zSuuUdrSC"
       >
-        Learn Here
+        Learn More
       </Link>
-      <button onClick={() => window.history.back()} className="text-indigo-600">
-        Back
-      </button>
-      <Card></Card>
+      <Buttons />
     </>
   );
 }

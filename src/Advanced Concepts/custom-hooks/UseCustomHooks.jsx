@@ -1,3 +1,5 @@
+import Buttons from "../../Components/Button";
+
 export default function Page() {
   return (
     <div className="space-y-6 text-left">
@@ -101,6 +103,15 @@ export default function Demo({ defaultValue }) {
         komponen. Dengan mengikuti aturan hook React, kamu bisa membuat hook
         yang reusable, bersih, dan mudah diuji. Selamat mencoba!
       </p>
+      <div className="space-y-4">
+        <a
+          target="_blank"
+          href="https://youtu.be/I2Bgi0Qcdvc?si=48ndYPDTNeqZoMf8"
+        >
+          Learn More
+        </a>
+        <Buttons />
+      </div>
     </div>
   );
 }

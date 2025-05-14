@@ -133,6 +133,9 @@ const UseMemo = React.lazy(
 const UseCallback = React.lazy(
   () => import("./Advanced Concepts/performance-optimization/UseCallback.jsx")
 );
+const ReactLazy = React.lazy(
+  () => import("./Advanced Concepts/performance-optimization/ReactLazy.jsx")
+);
 const ReactWindow = React.lazy(
   () => import("./Advanced Concepts/performance-optimization/ReactWindow.jsx")
 );
@@ -205,6 +208,7 @@ const router = createBrowserRouter([
   { path: "/performances/react-memo", element: <ReactMemo /> },
   { path: "/performances/use-memo", element: <UseMemo /> },
   { path: "/performances/use-callback", element: <UseCallback /> },
+  { path: "/performances/react-lazy", element: <ReactLazy /> },
   { path: "/performances/react-window", element: <ReactWindow /> },
   { path: "/state-managers", element: <StateManagers /> },
 

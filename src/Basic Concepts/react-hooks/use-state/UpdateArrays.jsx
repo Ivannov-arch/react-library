@@ -64,10 +64,8 @@ export default function Page() {
 
       <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
         <code>{`import React, { useState } from "react";
-  import { useNavigate } from "react-router-dom";
   
   function MyFoods() {
-    const navigate = useNavigate();
     const [foods, setFoods] = useState(["Apple", "Orange", "Banana"]);
   
     function handleAddFood() {
@@ -80,11 +78,7 @@ export default function Page() {
       setFoods(foods.filter((_, i) => i !== index)); // hapus berdasarkan index
     }
   
-    return (
-      <div>
-        <button onClick={() => navigate("/")} className="text-indigo-600">Home</button>
-        <button onClick={() => window.history.back()} className="text-indigo-600">Back</button>
-  
+    return (  
         <h2>List of Food</h2>
         <ul>
           {foods.map((food, index) => (

@@ -27,7 +27,7 @@
 //             return[...POSTS]}),
 
 //     })
-//     // postsQuery.status === "success" 
+//     // postsQuery.status === "success"
 
 //     // useMutation() -------------------------------------------
 //     const newPostMutation = useMutation({
@@ -57,43 +57,63 @@
 // }
 //#endregion
 
-
+import Buttons from "../../../Components/Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PostsList1 from "./components/PostsList1";
 import PostsList2 from "./components/PostsList2";
 import Post from "./components/Post";
 import CreatePost from "./components/CreatePost";
-import PostListPaginated from './components/PostListPaginated';
+import PostListPaginated from "./components/PostListPaginated";
 import PostInfinite from "./components/PostInfinite";
 // import { useQueryClient } from "@tanstack/react-query";
 // import { getPostsPaginated } from "./api/posts";
 
-
 export default function WdsReactQueryApp() {
-    const [currentPage, setCurrentPage] = useState(<PostsList1/>)
-    // const queryClient =  useQueryClient()
+  const [currentPage, setCurrentPage] = useState(<PostsList1 />);
+  // const queryClient =  useQueryClient()
 
-    // function onHoverPrefetch() {
-    //     queryClient.prefetchQuery({ 
-    //         queryKey: ["postsWDS", page, limit], 
-    //         queryFn: () => getPostsPaginated(page, limit)})
-    // }
+  // function onHoverPrefetch() {
+  //     queryClient.prefetchQuery({
+  //         queryKey: ["postsWDS", page, limit],
+  //         queryFn: () => getPostsPaginated(page, limit)})
+  // }
 
-    return (
-        <div>
-            <button onClick={() => setCurrentPage(<PostsList1/>)}>Posts List 1</button>
-            <button onClick={() => setCurrentPage(<PostsList2/>)}>Posts List 2</button>
-            <button onClick={() => setCurrentPage(<Post id={1} message=""/>)}>1st Post</button>
-            <button onClick={() => setCurrentPage(<CreatePost setCurrentPage={setCurrentPage}/>)}>Create Post</button>
-            {/* <button onMouseEnter={onHoverPrefetch} onClick={() => setCurrentPage(<PostListPaginated/>)}>Post List Paginated</button> */}
-            <button onClick={() => setCurrentPage(<PostListPaginated/>)}>Post List Paginated</button>
-            <button onClick={() => setCurrentPage(<PostInfinite/>)}>Post Infinite</button>
-            <br />
-            {currentPage}
-            <br />
-            <Link target='_blank' to='https://youtu.be/r8Dg0KVnfMA?si=unKXwbn6aCLeltEV'>Learn Here</Link>
-            <button onClick={() => window.history.back()} className="text-indigo-600">Back</button>
-        </div>
-    )
+  return (
+    <div>
+      <button onClick={() => setCurrentPage(<PostsList1 />)}>
+        Posts List 1
+      </button>
+      <button onClick={() => setCurrentPage(<PostsList2 />)}>
+        Posts List 2
+      </button>
+      <button onClick={() => setCurrentPage(<Post id={1} message="" />)}>
+        1st Post
+      </button>
+      <button
+        onClick={() =>
+          setCurrentPage(<CreatePost setCurrentPage={setCurrentPage} />)
+        }
+      >
+        Create Post
+      </button>
+      {/* <button onMouseEnter={onHoverPrefetch} onClick={() => setCurrentPage(<PostListPaginated/>)}>Post List Paginated</button> */}
+      <button onClick={() => setCurrentPage(<PostListPaginated />)}>
+        Post List Paginated
+      </button>
+      <button onClick={() => setCurrentPage(<PostInfinite />)}>
+        Post Infinite
+      </button>
+      <br />
+      {currentPage}
+      <br />
+      <Link
+        target="_blank"
+        to="https://youtu.be/r8Dg0KVnfMA?si=unKXwbn6aCLeltEV"
+      >
+        Learn More
+      </Link>
+      <Buttons />
+    </div>
+  );
 }

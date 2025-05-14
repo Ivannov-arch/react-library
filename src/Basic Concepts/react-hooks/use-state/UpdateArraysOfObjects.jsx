@@ -108,6 +108,7 @@ export default function Page() {
     function handleAddCar() {
       const newCar = { year: carYear, make: carMake, model: carModel };
       setCars(c => [...c, newCar]); // tambahkan mobil ke array
+      // reset form
       setYear(new Date().getFullYear());
       setMake("");
       setModel("");

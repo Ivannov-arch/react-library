@@ -23,7 +23,7 @@ import Buttons from "../../../Components/Button";
 function MyEffect() {
   // ---------------------------------------------------------------------------
   const [count, setCount] = useState(0);
-  const [color, setColor] = useState("blue");
+  const [color, setColor] = useState("gray");
 
   useEffect(() => {
     document.title = `Count: ${count} ${color}`;
@@ -40,7 +40,7 @@ function MyEffect() {
     setCount((c) => c - 1);
   }
   function changeColor() {
-    setColor((c) => (c === "blue" ? "red" : "blue"));
+    setColor((c) => (c === "gray" ? "red" : "gray"));
   }
 
   // ------------------------------------------------------------------------
@@ -162,7 +162,7 @@ import { useNavigate } from "react-router-dom";
 function MyEffect() {
   const navigate = useNavigate();
   const [count, setCount] = useState(0);
-  const [color, setColor] = useState("blue");
+  const [color, setColor] = useState("gray");
 
   useEffect(() => {
     document.title = \`Count: \${count} \${color}\`;
@@ -204,7 +204,7 @@ function MyEffect() {
         <p className="mt-6 mb-4 text-3xl" style={{ color: color }}>Count: {count}</p>
         <button onClick={() => setCount(c => c + 1)}>Add</button>
         <button onClick={() => setCount(c => c - 1)}>Substract</button>
-        <button onClick={() => setColor(c => c === "blue" ? "red" : "blue")}>Change Color</button>
+        <button onClick={() => setColor(c => c === "gray" ? "red" : "gray")}>Change Color</button>
       </div>
     </>
   );

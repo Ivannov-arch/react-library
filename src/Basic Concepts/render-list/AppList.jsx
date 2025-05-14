@@ -68,6 +68,40 @@ export default function Page() {
         <List items={vegetables} category="Vegetables" />
       )}
 
+      <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
+        <code>{`export default function RenderList() {
+
+  const fruits = [
+    { id: 1, name: "Apple", calories: 95 },
+    { id: 2, name: "Orange", calories: 45 },
+    { id: 3, name: "Banana", calories: 105 },
+    { id: 4, name: "Coconut", calories: 159 },
+    { id: 5, name: "Pineapple", calories: 37 },
+  ];
+
+  const vegetables = [
+    { id: 6, name: "Potatoes", calories: 110 },
+    { id: 7, name: "Celery", calories: 15 },
+    { id: 8, name: "Carrots", calories: 25 },
+    { id: 9, name: "Corn", calories: 63 },
+    { id: 10, name: "Broccoli", calories: 20 },
+  ];
+
+  // Optional: Sorting data sebelum render
+  fruits.sort((a, b) => a.name.localeCompare(b.name));
+  vegetables.sort((a, b) => a.calories - b.calories);
+
+  return (
+      {fruits.length > 0 && <List items={fruits} category="Fruits" />}
+      {vegetables.length > 0 && (
+        <List items={vegetables} category="Vegetables" />
+      )}
+  )
+}
+
+export default RenderList`}</code>
+      </pre>
+
       <h2>💡 Tips Tambahan</h2>
       <ul className="list-disc list-inside">
         <li>Urutkan list sebelum di-render agar tampilannya rapi.</li>
