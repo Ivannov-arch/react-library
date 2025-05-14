@@ -18,8 +18,10 @@
 // Header untuk menampilkan judul.
 // Setiap kali kamu menambah angka, komponen Header juga ikut di-render ulang meskipun props-nya tidak berubah.
 
+import React, { useState } from "react";
 import Buttons from "../../Components/Button";
 export default function Page() {
+  const [count, setCount] = useState(0);
   return (
     <div className="space-y-6 text-left">
       <h1>🧠 Optimasi Komponen dengan React.memo()</h1>
@@ -41,6 +43,24 @@ export default function Page() {
       </ul>
 
       <h2>📦 Contoh Sederhana</h2>
+
+      <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
+        <code>
+          {`export default function ReactMemo() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+
+      <Header />
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Tambah</button>
+
+    </>
+  );
+}`}
+        </code>
+      </pre>
       <p>Bayangkan kamu punya 2 komponen:</p>
       <ul className="list-disc list-inside">
         <li>
@@ -71,6 +91,12 @@ export default function Page() {
         Sekarang, <strong>Header tidak akan dirender ulang</strong> saat kamu
         menekan tombol tambah, karena props-nya tidak berubah!
       </p>
+
+      <div className="space-y-4 bg-gray-700 p-5 border rounded">
+        <Header />
+        <h1>Count: {count}</h1>
+        <button onClick={() => setCount(count + 1)}>Tambah</button>
+      </div>
 
       <h2>📉 Tanpa React.memo()</h2>
       <p>
@@ -131,6 +157,12 @@ export default function Page() {
     </div>
   );
 }
+
+// eslint-disable-next-line react/display-name
+const Header = React.memo(() => {
+  console.log("Header di-render ulang!");
+  return <h2>Aplikasi Penghitung</h2>;
+});
 
 // versi tanpa react.memo
 // function Header() {

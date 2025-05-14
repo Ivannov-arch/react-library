@@ -62,25 +62,45 @@ export default function UseMemoPage() {
       </p>
 
       <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
-        <code>{`const total = useMemo(() => {
-  console.log("Menghitung total...");
-  return items.reduce((sum, item) => sum + item, 0);
-}, [items]);`}</code>
-      </pre>
-
-      <h2>🧪 Demo Interaktif</h2>
-      <p>
-        Perhatikan bahwa fungsi <code>Menghitung total...</code> hanya dipanggil
-        jika <code>items</code> berubah.
-      </p>
-
+        <code>{`export default function UseMemoPage() {
+  const [items, setItems] = useState([100, 200, 300]);
+  const [count, setCount] = useState(0);
+  
+  const total = useMemo(() => {
+    console.log("Menghitung total...");
+    return items.reduce((sum, item) => sum + item, 0);
+  }, [items]);
+  
+  return (
       <h3>Total Harga: {total}</h3>
-      <button
+
+      // Penambahan Count tidak akan membuat total dihitung ulang
+      <button 
         onClick={() => setCount(count + 1)}
         className="bg-indigo-600 px-4 py-2 rounded-md text-white"
       >
         Tambah Count: {count}
       </button>
+  );
+}`}</code>
+      </pre>
+
+      <h2>🧪 Demo Interaktif</h2>
+      <p>
+        Perhatikan bahwa fungsi{" "}
+        <code>Menghitung total... (di inspect/console)</code> hanya dipanggil
+        jika <code>items</code> berubah.
+      </p>
+
+      <div className="space-y-4 bg-gray-700 p-5 border rounded">
+        <h3>Total Harga: {total}</h3>
+        <button
+          onClick={() => setCount(count + 1)}
+          className="bg-indigo-600 px-4 py-2 rounded-md text-white"
+        >
+          Tambah Count: {count}
+        </button>
+      </div>
 
       <h2>Kesimpulan</h2>
       <p>

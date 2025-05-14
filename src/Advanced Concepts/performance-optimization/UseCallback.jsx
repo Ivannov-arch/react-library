@@ -85,14 +85,16 @@ const decrement = useCallback(() => setCount(prev => prev - 1), []);`}</code>
       </p>
 
       <h2>🧪 Tampilan Hasil</h2>
+
+      <div className="space-x-3 space-y-4 bg-gray-700 p-5 border rounded">
+        <h3 className="text-xl">Count: {count}</h3>
+        <CounterButton onClick={increment} label="Tambah" />
+        <CounterButton onClick={decrement} label="Kurangi" />
+      </div>
       <p>
         Komponen ini memiliki dua tombol yang memakai fungsi dari{" "}
         <code>useCallback</code>:
       </p>
-
-      <h3 className="text-xl">Count: {count}</h3>
-      <CounterButton onClick={increment} label="Tambah" />
-      <CounterButton onClick={decrement} label="Kurangi" />
 
       <pre className="bg-gray-800 p-4 rounded-md overflow-auto text-white text-sm">
         <code>
